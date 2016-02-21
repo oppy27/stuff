@@ -77,12 +77,14 @@ public class App extends AbstractMojo {
 		
 		System.out.println(st.render());
 		
-		// Write class file
+		// Determine file path
 		String fileName = sourceFolder + File.separator + basePackage.replace(".", File.separator) + File.separator + 
 				testGroup + File.separator + "c" + chapterName.replace(".", "_") + File.separator + className + ".java";
-		File f = new File(fileName);
+		// Create file path
+		File f = new File(fileName).getParentFile();
 		File parent = f.getParentFile();
 		parent.mkdirs();
+		// Write class file
 		BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 		bw.write(st.render());
 		bw.close();
