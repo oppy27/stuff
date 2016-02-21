@@ -61,7 +61,7 @@ public class App extends AbstractMojo {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream(TEST_TEMPLATE);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		while ((line = br.readLine()) != null) {
-			template.append(line);
+			template.append(line + "\n");
 		}	
 		
 		ST st = new ST(template.toString());
@@ -80,8 +80,11 @@ public class App extends AbstractMojo {
 		// Write class file
 		String fileName = sourceFolder + File.separator + basePackage.replace(".", File.separator) + File.separator + 
 				testGroup + File.separator + "c" + chapterName.replace(".", "_") + File.separator + className + ".java";
-		System.out.println("FileName: " + fileName);
-		
-		// BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+		File f = new File(fileName);
+		File parent = f.getParentFile();
+		parent.mkdirs();
+		BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+		bw.write(st.render());
+		bw.close();
 	}
 }
