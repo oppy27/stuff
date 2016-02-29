@@ -19,8 +19,8 @@ import org.stringtemplate.v4.ST;
  * Hello world!
  *
  */
-@Mojo (name = "SayHi")
-public class App extends AbstractMojo {
+@Mojo (name = "generate")
+public class TestCaseGenerator extends AbstractMojo {
 	
 	@Parameter(property="sourceFolder", defaultValue="${project.build.testSourceDirectory}")
 	private String sourceFolder;
