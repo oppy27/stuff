@@ -1,0 +1,5 @@
+Test
+
+%{testCaseParserMacro|sourceFolder=src/test/java} 
+
+More text here
